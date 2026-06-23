@@ -1,0 +1,25 @@
+body.dark {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #242424;
+  --bg-hover: #2e2e2e;
+  --border: #333333;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --accent: #f97316;
+  --accent-hover: #ea6c0a;
+  --danger: #e05252;
+  --done-color: #a0a0a0;
+}
+
+body.light {
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --bg-hover: #ebebeb;
+  --border: #e0e0e0;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --accent: #f97316;
+  --accent-hover: #ea6c0a;
+  --danger: #e05252;
+  --done-color: #999999;
+}
