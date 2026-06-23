@@ -25,17 +25,26 @@
 }
 
 #theme-toggle {
-  background: var(--bg-hover);
-  color: var(--text-primary);
+  background: transparent;
+  color: var(--text-secondary);
   border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 1rem;
-  transition: background 0.2s;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
 }
 
 #theme-toggle:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  color: var(--accent);
+}
+
+#theme-toggle svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: fill 0.2s;
 }
 
 #projects-label {
@@ -75,7 +84,6 @@
 }
 
 .project-item.active .project-name {
-  color: var(--accent);
   font-weight: 600;
 }
 
@@ -96,12 +104,16 @@
 }
 
 .project-actions {
-  display: none;
+  display: flex;
   gap: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
 
 .project-item:hover .project-actions {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .project-actions button {
@@ -139,4 +151,39 @@
 
 #new-project-btn:hover {
   background: var(--accent-hover);
+}
+
+/* Sidebar Overlay Scrim (hidden by default) */
+#sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 80;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive Mobile Sidebar styling */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -260px;
+    z-index: 90;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
+  }
+
+  /* When sidebar is opened */
+  #app.sidebar-open #sidebar {
+    left: 0;
+  }
+
+  #app.sidebar-open #sidebar-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }

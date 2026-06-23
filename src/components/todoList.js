@@ -51,12 +51,14 @@ export function renderTodoList() {
       </div>
     `;
 
-    li.querySelector(".todo-checkbox").addEventListener("click", () => {
+    li.addEventListener("click", (e) => {
+      if (e.target.closest(".todo-actions")) return;
       toggleTodo(todo.id);
       renderTodoList();
     });
 
-    li.querySelector(".edit-btn").addEventListener("click", () => {
+    li.querySelector(".edit-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
       openModal({
         title: "Edit Todo",
         showColor: false,
@@ -68,7 +70,8 @@ export function renderTodoList() {
       });
     });
 
-    li.querySelector(".delete-btn").addEventListener("click", () => {
+    li.querySelector(".delete-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
       deleteTodo(todo.id);
       renderTodoList();
     });
